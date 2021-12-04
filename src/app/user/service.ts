@@ -1,7 +1,7 @@
 import { IRegisterUser } from '../../shared/interfaces/IUser'
 import { loginMapping, registerMapping } from '../../shared/mapper/user-response.mapper'
 import User from '../../shared/schemas/User'
-import { verifyPassword } from '../../shared/tools/utils/password.utils'
+import { verifyPassword } from '../../shared/tools/password.utils'
 
 export class UserService {
   public async create(data: IRegisterUser) {

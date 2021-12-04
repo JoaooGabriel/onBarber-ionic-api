@@ -1,6 +1,6 @@
 import { mongoose } from '../../config/connection-mongoose'
 import { IRegisterUser } from '../interfaces/IUser'
-import { hashPassword } from '../tools/utils/password.utils'
+import { hashPassword } from '../tools/password.utils'
 
 const UserSchema = new mongoose.Schema({
   name: {
