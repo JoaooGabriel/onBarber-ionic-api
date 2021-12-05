@@ -1,5 +1,5 @@
 import { IRegisterUser } from '../../shared/interfaces/IUser'
-import { loginMapping, registerMapping } from '../../shared/mapper/user-response.mapper'
+import { registerMapping, responseMapping } from '../../shared/mapper/user-response.mapper'
 import User from '../../shared/schemas/User'
 import { verifyPassword } from '../../shared/tools/password.utils'
 
@@ -14,13 +14,15 @@ export class UserService {
 
     const user = await User.create(data)
 
-    return await registerMapping(user)
+    return registerMapping(user)
   }
 
   public async findAll() {
     const users = await User.find()
 
-    return users
+    const response = responseMapping(users)
+
+    return response
   }
 
   public async findById(userId: string) {
@@ -52,6 +54,6 @@ export class UserService {
       throw new Error('E-mail ou senha incorretos!');
     }
 
-    return await loginMapping(user, user._id)
+    return responseMapping(user)
   }
 }
