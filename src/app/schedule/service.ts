@@ -1,6 +1,7 @@
 import { format } from 'date-fns';
 import { IRegisterSchedule } from '../../shared/interfaces/ISchedule';
 import Schedule from '../../shared/schemas/Schedule';
+import { responseScheduleMapping } from './../../shared/mapper/schedules-response.mapper';
 import { validateDuplicateHour } from './../../shared/tools/validate-duplicate-hours.utils';
 
 export class ScheduleService {
@@ -21,8 +22,9 @@ export class ScheduleService {
 
   public async findAll() {
     const schedules = await Schedule.find()
+    const response = responseScheduleMapping(schedules)
 
-    return schedules
+    return response
   }
 
   public async findById(scheduleId: string) {
@@ -37,8 +39,9 @@ export class ScheduleService {
 
   public async findByUserId(userId: string) {
     const schedules = await Schedule.find({ userId })
-
-    return schedules
+    const response = responseScheduleMapping(schedules)
+    
+    return response
   }
 
   public async delete(scheduleId: string) {

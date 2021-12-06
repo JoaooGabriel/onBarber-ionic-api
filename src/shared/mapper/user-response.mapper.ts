@@ -1,6 +1,6 @@
 import { IUser } from "../interfaces/IUser"
 
-const userMapping = (user: IUser, id: string) => {
+const userMapping = (user: IUser, id?: string) => {
   const userResponse = {
     id,
     name: user.name,
@@ -21,13 +21,14 @@ export const registerMapping = (user: IUser) => {
   return userResponse
 }
 
-export const responseMapping = (user: any) => {
+export const responseUserMapping = (user: any) => {
   let responseMapping
 
   if (Array.isArray(user)) {
     if (user.length === 0) {
       return
     }
+
     responseMapping = user.map((u) => {
       const response = userMapping(u, u._id)
 

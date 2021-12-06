@@ -1,5 +1,5 @@
 import { IRegisterUser } from '../../shared/interfaces/IUser'
-import { registerMapping, responseMapping } from '../../shared/mapper/user-response.mapper'
+import { registerMapping, responseUserMapping } from '../../shared/mapper/user-response.mapper'
 import User from '../../shared/schemas/User'
 import { verifyPassword } from '../../shared/tools/password.utils'
 
@@ -20,7 +20,7 @@ export class UserService {
   public async findAll() {
     const users = await User.find()
 
-    const response = responseMapping(users)
+    const response = responseUserMapping(users)
 
     return response
   }
@@ -54,6 +54,6 @@ export class UserService {
       throw new Error('E-mail ou senha incorretos!');
     }
 
-    return responseMapping(user)
+    return responseUserMapping(user)
   }
 }
