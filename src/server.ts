@@ -1,7 +1,7 @@
 import { app as server } from './app/app'
 import { mongooseConnection } from './config/connection-mongoose'
 
-const serverPort = process.env.SERVER_PORT
+const serverPort = process.env.PORT || 3333
 
 mongooseConnection
   .then(() => {
