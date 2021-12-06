@@ -17,7 +17,7 @@ export class ScheduleService {
       day
     })
 
-    return schedules
+    return responseScheduleMapping(schedule)
   }
 
   public async findAll() {
